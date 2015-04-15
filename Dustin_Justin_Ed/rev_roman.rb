@@ -26,7 +26,6 @@ class RomanNumeral
     val = 0
     @subsequent_map.each do |item|
       if @roman_numeral.index(item) != nil
-        puts @roman_numeral[@roman_numeral.index(item), 2]
         @roman_numeral.slice!(item)
         val = val + single_roman_to_digit(item[1]) - single_roman_to_digit(item[0])
       end
@@ -35,7 +34,6 @@ class RomanNumeral
   end
 
   def single_roman_to_digit(roman_char)
-    validate_roman_numeral
     @roman_map.each_index do |i|
       if roman_char == roman_map[i]
         return (i % 2 == 0 ? 1 : 5) * (10 ** (i / 2))
@@ -44,7 +42,14 @@ class RomanNumeral
   end
 
   def validate_roman_numeral
+    last_char = ''
+    consecutive_count = 1
     @roman_numeral.each_char do |char|
+      if char == last_char && char != 'M'
+        consecutive_count = consecutive_count + 1
+      else
+        last_char = char
+      end
       case char
         when 'I'
         when 'V'
@@ -55,6 +60,9 @@ class RomanNumeral
         when 'M'
         else
           raise IOError, "Invalid Roman Numeral"
+      end
+      if consecutive_count == 4
+        raise IOError, "Invalid Roman Numeral"
       end
     end
   end
