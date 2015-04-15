@@ -72,7 +72,7 @@ describe RomanNumeral do
   end
 
   it 'will return "40" when the roman numeral is set to "XL"' do
-    subject.set_roman_numeral('X')
+    subject.set_roman_numeral('XL')
     expect(subject.roman_to_digit).to eq(40)
   end
 
@@ -81,8 +81,8 @@ describe RomanNumeral do
     expect(subject.roman_to_digit).to eq(50)
   end
 
-  it 'will return "90" when the roman numeral is set to "LC"' do
-    subject.set_roman_numeral('LC')
+  it 'will return "90" when the roman numeral is set to "XC"' do
+    subject.set_roman_numeral('XC')
     expect(subject.roman_to_digit).to eq(90)
   end
 
@@ -101,8 +101,8 @@ describe RomanNumeral do
     expect(subject.roman_to_digit).to eq(500)
   end
 
-  it 'will return "900" when the roman numeral is set to "DM"' do
-    subject.set_roman_numeral('DM')
+  it 'will return "900" when the roman numeral is set to "CM"' do
+    subject.set_roman_numeral('CM')
     expect(subject.roman_to_digit).to eq(900)
   end
 
