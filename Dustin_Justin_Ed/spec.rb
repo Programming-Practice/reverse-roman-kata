@@ -16,7 +16,7 @@ describe RomanNumeral do
     expect(subject.roman_numeral.class).to eq(String)
   end
 
-  it 'will raise an IOError if invalid roman numeral is set incorrectly' do
+  it 'will raise an IOError if invalid roman numeral is set with invalid characters' do
     subject.set_roman_numeral('Fail')
     expect{subject.roman_to_digit}.to raise_error(IOError)
   end
@@ -116,4 +116,38 @@ describe RomanNumeral do
     expect(subject.roman_to_digit).to eq(1990)
   end
 
+  it 'will raise an IOError if invalid roman numeral includes 4 consecutive "I" characters' do
+    subject.set_roman_numeral('IIII')
+    expect{subject.roman_to_digit}.to raise_error(IOError)
+  end
+
+  it 'will raise an IOError if invalid roman numeral includes 4 consecutive "V" characters' do
+    subject.set_roman_numeral('VVVV')
+    expect{subject.roman_to_digit}.to raise_error(IOError)
+  end
+
+  it 'will raise an IOError if invalid roman numeral includes 4 consecutive "X" characters' do
+    subject.set_roman_numeral('XXXX')
+    expect{subject.roman_to_digit}.to raise_error(IOError)
+  end
+
+  it 'will raise an IOError if invalid roman numeral includes 4 consecutive "L" characters' do
+    subject.set_roman_numeral('LLLL')
+    expect{subject.roman_to_digit}.to raise_error(IOError)
+  end
+
+  it 'will raise an IOError if invalid roman numeral includes 4 consecutive "C" characters' do
+    subject.set_roman_numeral('CCCC')
+    expect{subject.roman_to_digit}.to raise_error(IOError)
+  end
+
+  it 'will raise an IOError if invalid roman numeral includes 4 consecutive "D" characters' do
+    subject.set_roman_numeral('DDDD')
+    expect{subject.roman_to_digit}.to raise_error(IOError)
+  end
+
+  it 'will return "4000" when the roman numeral is set to "MMMM"' do
+    subject.set_roman_numeral('MMMM')
+    expect(subject.roman_to_digit).to eq(4000)
+  end
 end
