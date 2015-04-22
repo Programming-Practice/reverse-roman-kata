@@ -76,6 +76,17 @@ describe RomanNumeral do
     expect(subject.roman_to_digit).to eq(40)
   end
 
+
+  it 'will return "46" when the roman numeral is set to "XLVI"' do
+    subject.set_roman_numeral('XLVI')
+    expect(subject.roman_to_digit).to eq(46)
+  end
+
+  it 'will return "47" when the roman numeral is set to "XLVII"' do
+    subject.set_roman_numeral('XLVII')
+    expect(subject.roman_to_digit).to eq(47)
+  end
+
   it 'will return "50" when the roman numeral is set to "L"' do
     subject.set_roman_numeral('L')
     expect(subject.roman_to_digit).to eq(50)
@@ -84,6 +95,11 @@ describe RomanNumeral do
   it 'will return "90" when the roman numeral is set to "XC"' do
     subject.set_roman_numeral('XC')
     expect(subject.roman_to_digit).to eq(90)
+  end
+
+  it 'will return "99" when the roman numeral is set to "XCIX"' do
+    subject.set_roman_numeral('XCIX')
+    expect(subject.roman_to_digit).to eq(99)
   end
 
   it 'will return "100" when the roman numeral is set to "C"' do
@@ -114,6 +130,11 @@ describe RomanNumeral do
   it 'will return "1990" when the roman numeral is set to "MCMXC"' do
     subject.set_roman_numeral('MCMXC')
     expect(subject.roman_to_digit).to eq(1990)
+  end
+
+  it 'will return "2008" when the roman numeral is set to "MMVIII"' do
+    subject.set_roman_numeral('MMVIII')
+    expect(subject.roman_to_digit).to eq(2008)
   end
 
   it 'will raise an IOError if invalid roman numeral includes 4 consecutive "I" characters' do

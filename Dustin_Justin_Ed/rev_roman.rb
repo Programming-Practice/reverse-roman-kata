@@ -45,21 +45,13 @@ class RomanNumeral
     last_char = ''
     consecutive_count = 1
     @roman_numeral.each_char do |char|
+      if !@roman_map.include? char
+        raise IOError, "Invalid Roman Numeral"
+      end
       if char == last_char && char != 'M'
         consecutive_count = consecutive_count + 1
       else
         last_char = char
-      end
-      case char
-        when 'I'
-        when 'V'
-        when 'X'
-        when 'L'
-        when 'C'
-        when 'D'
-        when 'M'
-        else
-          raise IOError, "Invalid Roman Numeral"
       end
       if consecutive_count == 4
         raise IOError, "Invalid Roman Numeral"
