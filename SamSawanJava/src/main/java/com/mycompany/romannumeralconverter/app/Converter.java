@@ -53,6 +53,8 @@ public class Converter {
                     numberPair.add(1000);
                     sum += checkListSize(numberPair);
                     break;
+                    //this is really to check for invalid input 
+                    //its a quick fix but sorta kinda sad path is taken care of here
                 default:
                     return 0;
             }
@@ -69,25 +71,25 @@ public class Converter {
     //three, make the number pair list a global variable to let every method have access to it.
     //personally, I hate global variables from a design perspective but who knows.
     
-    private int checkListSize(List arrayToBeChecked) {
-        if (arrayToBeChecked.size() == 2) {
-            int answer = numberPairEvaluator((int) arrayToBeChecked.get(0), (int) arrayToBeChecked.get(1), arrayToBeChecked);
+    private int checkListSize(List listToBeChecked) {
+        if (listToBeChecked.size() == 2) {
+            int answer = numberPairEvaluator((int) listToBeChecked.get(0), (int) listToBeChecked.get(1), listToBeChecked);
             return answer;
         } else {
             return 0;
         }
     }
     
-    private int numberPairEvaluator(int firstNumber, int secondNumber, List arrayToBeChecked) {
+    private int numberPairEvaluator(int firstNumber, int secondNumber, List listToBeChecked) {
         if (firstNumber > secondNumber) {
-            arrayToBeChecked.clear();
-            arrayToBeChecked.add(secondNumber);
+            listToBeChecked.clear();
+            listToBeChecked.add(secondNumber);
             return firstNumber;
         } else if (firstNumber == secondNumber) {
-            arrayToBeChecked.clear();
+            listToBeChecked.clear();
             return firstNumber + secondNumber;
         } else {
-            arrayToBeChecked.clear();
+            listToBeChecked.clear();
             return secondNumber - firstNumber;
         }
     }
