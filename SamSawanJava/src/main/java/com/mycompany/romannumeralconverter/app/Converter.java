@@ -73,23 +73,20 @@ public class Converter {
     
     private int checkListSize(List listToBeChecked) {
         if (listToBeChecked.size() == 2) {
-            int answer = numberPairEvaluator((int) listToBeChecked.get(0), (int) listToBeChecked.get(1), listToBeChecked);
-            return answer;
+            return numberPairEvaluator((int) listToBeChecked.get(0), (int) listToBeChecked.get(1), listToBeChecked);
         } else {
             return 0;
         }
     }
     
     private int numberPairEvaluator(int firstNumber, int secondNumber, List listToBeChecked) {
+        listToBeChecked.clear();
         if (firstNumber > secondNumber) {
-            listToBeChecked.clear();
             listToBeChecked.add(secondNumber);
             return firstNumber;
         } else if (firstNumber == secondNumber) {
-            listToBeChecked.clear();
             return firstNumber + secondNumber;
         } else {
-            listToBeChecked.clear();
             return secondNumber - firstNumber;
         }
     }
