@@ -1,10 +1,9 @@
 require 'rspec'
 require_relative 'reverse_roman'
 require_relative 'reverse_roman2'
+require_relative 'reverse_roman3'
 
-describe 'Reverse Roman tests' do
-
-  subject {ReverseRoman2.new}
+describe ReverseRoman3 do
 
   it 'should convert I to 1' do
     expect(subject.convert('I')).to eq(1)
@@ -100,6 +99,10 @@ describe 'Reverse Roman tests' do
 
   it 'Converting MMMM will not raise an error' do
     expect(subject.convert('MMMM')).to eq(4000)
+  end
+
+  it 'Converting DDDDXVI will raise an error' do
+    expect{(subject.convert('DDDDXVI'))}.to raise_error(IOError)
   end
 
   it 'Converting A will raise an error' do

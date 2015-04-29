@@ -37,10 +37,8 @@ class ReverseRoman
   end
 
   def check_consecutive_numerals(roman_numerals)
-    result = roman_numerals.scan(/((.)\2{3,})/).map(&:first).sort_by(&:length).map {|s| s[0] }
-    unless result.length == 0 || result == ['M']
-      raise IOError, "Invalid Roman Numeral: #{result} occurs more than three times"
-    end
+    consecutive_numerals = roman_numerals.scan(/(.)\1\1\1/)
+    raise IOError, "Invalid Roman Numeral: #{consecutive_numerals[0]} occurs more than three times" unless consecutive_numerals.length == 0 || consecutive_numerals.to_s.include?('M')
   end
   
 end
